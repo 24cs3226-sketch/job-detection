@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JobShield — Fake Job & Internship Detector</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/auth-guard.js"></script>
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<nav class="navbar">
+    <div class="nav-inner">
+        <a href="index.html" class="brand">
+            <span class="brand-mark">◈</span>
+            <span class="brand-text">JobShield</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="scanner.html" class="nav-link active">Scanner</a>
+            <a href="history.html" class="nav-link">Scan History</a>
+            <a href="companies.html" class="nav-link">Company Registry</a>
+        </div>
+    </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+    <div class="hero-inner">
+        <p class="eyebrow">Final Year Project — AI-assisted Verification</p>
+        <h1 class="hero-title">Before you apply, <span class="hero-accent">scan it.</span></h1>
+        <p class="hero-sub">Paste a job or internship post — or upload a screenshot — and JobShield checks it
+            against known scam patterns, payment-fraud language, and a company safety registry.</p>
+    </div>
+    <div class="scan-line" aria-hidden="true"></div>
+</header>
+
+<!-- ===================== MAIN SCANNER ===================== -->
+<main class="container">
+
+    <section class="scanner-card">
+        <div class="tabs" role="tablist">
+            <button class="tab-btn active" data-tab="text" role="tab" aria-selected="true">
+                <span class="tab-icon">✎</span> Paste Text
+            </button>
+            <button class="tab-btn" data-tab="image" role="tab" aria-selected="false">
+                <span class="tab-icon">⬆</span> Upload Screenshot
+            </button>
+        </div>
+
+        <!-- TEXT INPUT PANEL -->
+        <div class="tab-panel active" id="panel-text">
+            <label for="jobText" class="field-label">Job / Internship Description</label>
+            <textarea id="jobText" placeholder="Paste the full job or internship post here — company name, role, salary, contact details, everything you were given..."></textarea>
+            <div class="panel-footer">
+                <span class="char-count" id="charCount">0 characters</span>
+                <button class="btn-primary" id="scanTextBtn">
+                    <span class="btn-icon">⚡</span> Scan This Post
+                </button>
+            </div>
+        </div>
+
+        <!-- IMAGE UPLOAD PANEL -->
+        <div class="tab-panel" id="panel-image">
+            <label class="field-label">Upload a Screenshot</label>
+            <div class="dropzone" id="dropzone">
+                <input type="file" id="imageInput" accept=".jpg,.jpeg,.png,.webp" hidden>
+                <div class="dropzone-content" id="dropzoneContent">
+                    <span class="dropzone-icon">🖼</span>
+                    <p class="dropzone-text">Drag & drop an image, or <span class="link-text">browse files</span></p>
+                    <p class="dropzone-hint">JPG, PNG, WEBP — up to 5MB</p>
+                </div>
+                <img id="imagePreview" class="image-preview" hidden alt="Preview">
+            </div>
+            <div class="panel-footer">
+                <span class="char-count" id="fileNameLabel"></span>
+                <button class="btn-primary" id="scanImageBtn" disabled>
+                    <span class="btn-icon">⚡</span> Extract & Scan
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== LOADING STATE ===================== -->
+    <section class="loading-card" id="loadingCard" hidden>
+        <div class="scanner-anim">
+            <div class="scanner-beam"></div>
+        </div>
+        <p id="loadingText">Analyzing post for risk signals…</p>
+    </section>
+
+    <!-- ===================== RESULTS ===================== -->
+    <section class="result-card" id="resultCard" hidden>
+
+        <div class="verdict-banner" id="verdictBanner">
+            <div class="verdict-icon" id="verdictIcon">—</div>
+            <div class="verdict-text">
+                <h2 id="verdictTitle">—</h2>
+                <p id="verdictSubtitle">—</p>
+            </div>
+            <div class="risk-meter">
+                <svg viewBox="0 0 120 120" class="risk-ring">
+                    <circle cx="60" cy="60" r="50" class="ring-bg"/>
+                    <circle cx="60" cy="60" r="50" class="ring-fill" id="ringFill"/>
+                </svg>
+                <div class="risk-score-label">
+                    <span id="riskScoreNum">0</span><span class="risk-pct">%</span>
+                    <small>risk score</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="result-grid">
+            <!-- Company Safety -->
+            <div class="info-block">
+                <h3 class="info-block-title">🏢 Company Safety Check</h3>
+                <div id="companyCheckBody" class="company-check-body">—</div>
+            </div>
+
+            <!-- Red Flags -->
+            <div class="info-block">
+                <h3 class="info-block-title">🚩 Red Flags Detected</h3>
+                <ul id="flagsList" class="flags-list">
+                    <li class="flag-empty">No flags found.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-block" id="extractedTextBlock" hidden>
+            <h3 class="info-block-title">📄 Text Extracted From Image (OCR)</h3>
+            <p class="extracted-text" id="extractedTextBody"></p>
+        </div>
+
+        <div class="safety-tips" id="safetyTips"></div>
+
+        <button class="btn-secondary" id="scanAnotherBtn">Scan Another Post</button>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <p>JobShield — Built as a Final Year Project · Rule-based detection engine · Not a substitute for official verification</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

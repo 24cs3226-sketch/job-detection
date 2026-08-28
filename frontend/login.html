@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login — JobShield</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="auth-body">
+
+<canvas id="radarBg"></canvas>
+
+<div class="auth-wrap">
+  <div class="auth-card">
+
+    <div class="auth-brand">
+      <span class="brand-mark">◈</span>
+      <span class="brand-text">JobShield</span>
+    </div>
+
+    <div class="auth-heading">
+      <p class="eyebrow" id="authEyebrow">Access Console</p>
+      <h1 id="authTitle">Welcome back.</h1>
+      <p class="page-sub" id="authSub">Sign in to run scans and review the audit trail.</p>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <form id="loginForm" class="auth-form">
+      <div class="field-label-wrap">
+        <label class="field-label" for="loginUser">Username</label>
+        <input type="text" id="loginUser" placeholder="Enter your username" autocomplete="username" required>
+      </div>
+      <div class="field-label-wrap">
+        <label class="field-label" for="loginPass">Password</label>
+        <input type="password" id="loginPass" placeholder="Enter your password" autocomplete="current-password" required>
+      </div>
+
+      <div class="auth-row">
+        <button type="button" class="link-btn" id="forgotBtn">Forgot password?</button>
+      </div>
+
+      <button type="submit" class="btn-primary auth-submit">
+        <span class="btn-icon">⚡</span> Login
+      </button>
+      <p class="auth-msg" id="loginMsg"></p>
+
+      <div class="auth-switch">
+        No account? <button type="button" class="link-btn" id="showSignup">Sign up</button>
+      </div>
+    </form>
+
+    <!-- SIGNUP FORM -->
+    <form id="signupForm" class="auth-form" hidden>
+      <div class="field-label-wrap">
+        <label class="field-label" for="signUser">Username</label>
+        <input type="text" id="signUser" placeholder="Choose a username" required>
+      </div>
+      <div class="field-label-wrap">
+        <label class="field-label" for="signPass">Password</label>
+        <input type="password" id="signPass" placeholder="Choose a password (min 4 chars)" required>
+      </div>
+      <div class="field-label-wrap">
+        <label class="field-label" for="signPass2">Confirm password</label>
+        <input type="password" id="signPass2" placeholder="Re-enter password" required>
+      </div>
+
+      <button type="submit" class="btn-primary auth-submit">
+        <span class="btn-icon">⚡</span> Create account
+      </button>
+      <p class="auth-msg" id="signupMsg"></p>
+
+      <div class="auth-switch">
+        Already have an account? <button type="button" class="link-btn" id="showLogin">Login</button>
+      </div>
+    </form>
+
+    <!-- FORGOT PASSWORD -->
+    <form id="forgotForm" class="auth-form" hidden>
+      <div class="field-label-wrap">
+        <label class="field-label" for="forgotUser">Username</label>
+        <input type="text" id="forgotUser" placeholder="Enter your username" required>
+      </div>
+      <div class="field-label-wrap">
+        <label class="field-label" for="newPass">New password</label>
+        <input type="password" id="newPass" placeholder="Enter new password" required>
+      </div>
+
+      <button type="submit" class="btn-primary auth-submit">
+        <span class="btn-icon">⚡</span> Reset password
+      </button>
+      <p class="auth-msg" id="forgotMsg"></p>
+
+      <div class="auth-switch">
+        <button type="button" class="link-btn" id="backToLogin">← Back to login</button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+<script src="js/auth.js"></script>
+</body>
+</html>

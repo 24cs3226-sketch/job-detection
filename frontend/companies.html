@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Company Registry — JobShield</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/auth-guard.js"></script>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-inner">
+        <a href="index.html" class="brand">
+            <span class="brand-mark">◈</span>
+            <span class="brand-text">JobShield</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="scanner.html" class="nav-link">Scanner</a>
+            <a href="history.html" class="nav-link">Scan History</a>
+            <a href="companies.html" class="nav-link active">Company Registry</a>
+        </div>
+    </div>
+</nav>
+
+<header class="page-header">
+    <p class="eyebrow">Safety Database</p>
+    <h1 class="page-title">Known companies.</h1>
+    <p class="page-sub">Verified and flagged organizations used by the detection engine to cross-check company names.</p>
+</header>
+
+<main class="container">
+
+    <section class="company-grid" id="companyGrid">
+        <p class="loading-row">Loading registry…</p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <p>JobShield — Built as a Final Year Project · Rule-based detection engine · Not a substitute for official verification</p>
+</footer>
+
+<script src="js/companies.js"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JobShield — Fake Job & Internship Detector</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/auth-guard.js"></script>
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<nav class="navbar">
+    <div class="nav-inner">
+        <a href="index.html" class="brand">
+            <span class="brand-mark">◈</span>
+            <span class="brand-text">JobShield</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link active">Home</a>
+            <a href="scanner.html" class="nav-link">Scanner</a>
+            <a href="history.html" class="nav-link">Scan History</a>
+            <a href="companies.html" class="nav-link">Company Registry</a>
+        </div>
+    </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+    <div class="hero-inner">
+        <p class="eyebrow">Final Year Project — AI-assisted Verification</p>
+        <h1 class="hero-title">Don't get scammed. <span class="hero-accent">Scan it first.</span></h1>
+        <p class="hero-sub">JobShield checks job & internship posts against known scam patterns, payment-fraud
+            language, and a company safety registry — in seconds, from pasted text or a screenshot.</p>
+    </div>
+    <div class="scan-line" aria-hidden="true"></div>
+</header>
+
+<main class="container" style="max-width: 1100px;">
+
+    <!-- ===================== LIVE STATS ===================== -->
+    <section class="stats-row" id="statsRow" aria-label="Live scan statistics">
+        <div class="stat-pill">
+            <span class="stat-num" id="statTotal">—</span>
+            <span class="stat-label">Total Scans</span>
+        </div>
+        <div class="stat-pill stat-real">
+            <span class="stat-num" id="statReal">—</span>
+            <span class="stat-label">✅ Real</span>
+        </div>
+        <div class="stat-pill stat-suspicious">
+            <span class="stat-num" id="statSuspicious">—</span>
+            <span class="stat-label">⚠️ Suspicious</span>
+        </div>
+        <div class="stat-pill stat-fake">
+            <span class="stat-num" id="statFake">—</span>
+            <span class="stat-label">🛑 Fake</span>
+        </div>
+    </section>
+
+    <!-- ===================== MODULES ===================== -->
+    <section>
+        <div class="section-heading">
+            <h2>Explore the modules</h2>
+            <span class="section-note">5 modules · Node.js + Express + MySQL</span>
+        </div>
+
+        <div class="module-grid">
+
+            <a href="scanner.html#text" class="module-card mod-text">
+                <div class="module-icon">✎</div>
+                <h3>Text Scan Module</h3>
+                <p>Paste a job or internship description directly. Sent straight to the detection engine for
+                    instant scoring — no upload needed.</p>
+                <span class="module-link">Open Text Scan →</span>
+            </a>
+
+            <a href="scanner.html#image" class="module-card mod-ocr">
+                <div class="module-icon">🖼</div>
+                <h3>OCR &amp; Image Processing Module</h3>
+                <p>Upload a screenshot of a job post. Tesseract.js extracts the raw text, which then flows into
+                    the same detection engine as pasted text.</p>
+                <span class="module-link">Open Image Scan →</span>
+            </a>
+
+            <a href="scanner.html" class="module-card mod-engine">
+                <div class="module-icon">🧠</div>
+                <h3>Detection Engine Module</h3>
+                <p>The core scoring logic — keyword matching, regex red-flag patterns, company cross-check, and
+                    structure checks — combined into one 0–100 risk score behind every scan.</p>
+                <span class="module-link">See it run a scan →</span>
+            </a>
+
+            <a href="companies.html" class="module-card mod-companies">
+                <div class="module-icon">🏢</div>
+                <h3>Company Safety Registry Module</h3>
+                <p>Trusted and blacklisted companies stored in MySQL. The engine cross-checks every scan against
+                    this list, and you can add new entries here.</p>
+                <span class="module-link">View Registry →</span>
+            </a>
+
+            <a href="history.html" class="module-card mod-history">
+                <div class="module-icon">🗂</div>
+                <h3>Scan History &amp; Report Module</h3>
+                <p>Every scan — text or image — is logged with its risk score and verdict, so past checks can be
+                    reviewed or reported on later.</p>
+                <span class="module-link">View History →</span>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- ===================== HOW IT WORKS ===================== -->
+    <section>
+        <div class="section-heading">
+            <h2>How a scan works</h2>
+            <span class="section-note">Text Scan / OCR → Detection Engine → Registry check → History log</span>
+        </div>
+        <div class="how-it-works">
+            <div class="step-card">
+                <div class="step-num">01</div>
+                <h4>Submit</h4>
+                <p>Paste the job text, or upload a screenshot of the post.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">02</div>
+                <h4>Extract</h4>
+                <p>Images are OCR'd with Tesseract.js so text and screenshots share one pipeline.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">03</div>
+                <h4>Score</h4>
+                <p>Keywords, regex red flags, and the company registry combine into a 0–100 risk score.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">04</div>
+                <h4>Verdict</h4>
+                <p>Get a REAL / SUSPICIOUS / FAKE verdict with the exact flags that were triggered.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CTA ===================== -->
+    <section class="home-cta">
+        <h2>Got a job offer that feels off?</h2>
+        <p>Run it through the scanner before you share a single detail.</p>
+        <a href="scanner.html" class="btn-primary" style="text-decoration:none;">
+            <span class="btn-icon">⚡</span> Scan a Job Post
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <p>JobShield — Built as a Final Year Project · Rule-based detection engine · Not a substitute for official verification</p>
+</footer>
+
+<script src="js/home.js"></script>
+</body>
+</html>

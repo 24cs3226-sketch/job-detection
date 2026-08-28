@@ -1,0 +1,129 @@
+/* ============================================================
+   JobShield — Auth Pages (Login / Signup / Forgot Password)
+   Extends the "security scanner" design system from style.css:
+   ink background, amber accent, radar-sweep motif instead of
+   the single scan-line used on the marketing pages.
+   ============================================================ */
+
+.auth-body {
+    overflow: hidden;
+    height: 100vh;
+}
+
+#radarBg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background: var(--ink-900);
+}
+
+.auth-wrap {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 400px;
+    background: rgba(17, 21, 29, 0.82);
+    border: 1px solid var(--ink-600);
+    border-radius: 14px;
+    padding: 36px 32px 30px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 24px 70px rgba(0,0,0,0.5);
+    animation: authIn .6s ease both;
+}
+
+@keyframes authIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.auth-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 22px;
+}
+
+.auth-heading { text-align: center; margin-bottom: 26px; }
+.auth-heading .eyebrow { margin-bottom: 10px; }
+.auth-heading h1 {
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.auth-heading .page-sub { max-width: none; font-size: 0.88rem; }
+
+.field-label-wrap { margin-bottom: 16px; }
+.field-label-wrap input {
+    width: 100%;
+    background: var(--ink-900);
+    border: 1px solid var(--ink-600);
+    border-radius: 8px;
+    color: var(--paper);
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    padding: 12px 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.field-label-wrap input::placeholder { color: var(--ink-500); }
+.field-label-wrap input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(242, 169, 59, 0.15);
+}
+
+.auth-row {
+    display: flex;
+    justify-content: flex-end;
+    margin: -8px 0 18px;
+}
+
+.link-btn {
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+}
+.link-btn:hover { text-decoration: underline; }
+
+.auth-submit { width: 100%; justify-content: center; }
+
+.auth-msg {
+    min-height: 18px;
+    text-align: center;
+    font-size: 0.8rem;
+    margin-top: 12px;
+    font-family: var(--font-mono);
+}
+.auth-msg.success { color: var(--safe); }
+.auth-msg.error { color: var(--danger); }
+
+.auth-switch {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.82rem;
+    color: var(--paper-dim);
+}
+
+/* ---- navbar auth extras (logout link on app pages) ---- */
+.nav-link.logout { color: var(--danger); }
+.nav-link.logout:hover { color: var(--danger); border-color: var(--danger); }

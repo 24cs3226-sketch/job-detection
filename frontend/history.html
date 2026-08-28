@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scan History — JobShield</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/auth-guard.js"></script>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-inner">
+        <a href="index.html" class="brand">
+            <span class="brand-mark">◈</span>
+            <span class="brand-text">JobShield</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="scanner.html" class="nav-link">Scanner</a>
+            <a href="history.html" class="nav-link active">Scan History</a>
+            <a href="companies.html" class="nav-link">Company Registry</a>
+        </div>
+    </div>
+</nav>
+
+<header class="page-header">
+    <p class="eyebrow">Audit Trail</p>
+    <h1 class="page-title">Every scan, logged.</h1>
+    <p class="page-sub">A running record of everything JobShield has analyzed — stored in MySQL.</p>
+</header>
+
+<main class="container">
+
+    <div class="stats-row" id="statsRow">
+        <div class="stat-pill stat-total">
+            <span class="stat-num" id="statTotal">0</span>
+            <span class="stat-label">Total Scans</span>
+        </div>
+        <div class="stat-pill stat-real">
+            <span class="stat-num" id="statReal">0</span>
+            <span class="stat-label">Real</span>
+        </div>
+        <div class="stat-pill stat-suspicious">
+            <span class="stat-num" id="statSuspicious">0</span>
+            <span class="stat-label">Suspicious</span>
+        </div>
+        <div class="stat-pill stat-fake">
+            <span class="stat-num" id="statFake">0</span>
+            <span class="stat-label">Fake</span>
+        </div>
+    </div>
+
+    <section class="history-table-wrap">
+        <table class="history-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Type</th>
+                    <th>Company</th>
+                    <th>Preview</th>
+                    <th>Risk Score</th>
+                    <th>Verdict</th>
+                    <th>Scanned On</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="historyBody">
+                <tr><td colspan="8" class="loading-row">Loading scan history…</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+</main>
+
+<!-- Scan Detail Modal -->
+<div id="historyModal" class="modal-overlay hidden">
+    <div class="modal-box">
+        <button id="modalClose" class="modal-close" title="Close">✕</button>
+        <h2 class="modal-title">Scan Detail</h2>
+        <div id="modalMeta" class="modal-meta"></div>
+        <div id="modalContent" class="modal-content"></div>
+    </div>
+</div>
+
+<style>
+    .history-row-clickable { cursor: pointer; }
+    .history-row-clickable:hover { background: rgba(0,0,0,0.035); }
+    .modal-overlay {
+        position: fixed; inset: 0; background: rgba(0,0,0,0.55);
+        display: flex; align-items: center; justify-content: center;
+        z-index: 1000; padding: 20px;
+    }
+    .modal-overlay.hidden { display: none; }
+    .modal-box {
+        background: #fff; border-radius: 10px; max-width: 640px; width: 100%;
+        max-height: 85vh; overflow-y: auto; padding: 28px; position: relative;
+    }
+    .modal-close {
+        position: absolute; top: 14px; right: 16px; border: none; background: none;
+        font-size: 18px; cursor: pointer; color: #666;
+    }
+    .modal-title { margin: 0 0 12px; }
+    .modal-meta p { margin: 4px 0; font-size: 14px; }
+    .modal-image {
+        width: 100%; max-height: 360px; object-fit: contain;
+        border: 1px solid #e2e2e2; border-radius: 6px; margin: 14px 0 6px;
+        background: #fafafa;
+    }
+    .modal-subhead { font-size: 13px; color: #777; margin: 10px 0 4px; }
+    .modal-text {
+        white-space: pre-wrap; word-break: break-word; background: #f7f7f8;
+        border: 1px solid #eee; border-radius: 6px; padding: 12px; font-size: 13.5px;
+        max-height: 260px; overflow-y: auto; margin: 0;
+    }
+</style>
+
+<footer class="site-footer">
+    <p>JobShield — Built as a Final Year Project · Rule-based detection engine · Not a substitute for official verification</p>
+</footer>
+
+<script src="js/history.js"></script>
+</body>
+</html>
