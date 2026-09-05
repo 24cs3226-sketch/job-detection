@@ -50,7 +50,7 @@ async function loadHistory() {
                 <td><strong>${row.risk_score}</strong>/100</td>
                 <td><span class="verdict-tag ${tagClass}">${row.verdict}</span></td>
                 <td>${date}</td>
-                <td><button class="delete-btn" data-id="${row.id}" title="Delete this scan">🗑 Delete</button></td>
+                <td>—</td>
             `;
             tbody.appendChild(tr);
         });
@@ -133,37 +133,6 @@ document.getElementById('historyModal').addEventListener('click', (e) => {
 });
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeHistoryModal();
-});
-
-document.getElementById('historyBody').addEventListener('click', async (e) => {
-    const btn = e.target.closest('.delete-btn');
-    if (!btn) return;
-
-    const id = btn.dataset.id;
-    const confirmed = window.confirm('Delete this scan? Its image and result will be removed too. This cannot be undone.');
-    if (!confirmed) return;
-
-    btn.disabled = true;
-    btn.textContent = 'Deleting…';
-
-    try {
-        const res = await fetch(`${API_BASE}/history/${id}`, { method: 'DELETE' });
-        const json = await res.json();
-
-        if (json.success) {
-            await loadHistory();
-            await loadStats();
-        } else {
-            alert(json.message || 'Could not delete this scan.');
-            btn.disabled = false;
-            btn.textContent = '🗑 Delete';
-        }
-    } catch (err) {
-        alert('Could not reach the server.');
-        console.error(err);
-        btn.disabled = false;
-        btn.textContent = '🗑 Delete';
-    }
 });
 
 function escapeHtml(str) {
